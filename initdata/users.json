@@ -11,4 +11,6 @@
 		"_id":{
 			"$oid":"5878c5b5c62fbd359051a045"
 		},
-		"manage_users":true,"manage_posts":true}],"__v":0,"admin":true,"isSuperAdmin":true}
+		"manage_users":true,"manage_posts":true}],
+		"__v":0,"admin":true,"isSuperAdmin":true
+}
