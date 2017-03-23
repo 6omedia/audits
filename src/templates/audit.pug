@@ -1,0 +1,163 @@
+extends ./layout.pug
+block content
+
+	.container 
+		section#homepage
+			.row
+				.col-sm-4
+					.website-summary
+						#screenshots
+							img(src="/static/img/screenshot.png")
+							img(src=`${audit.screenshot}`)
+						a(href=`${audit.company_website}`)
+							p #{audit.company_website}
+						h3 Your Score
+							span #{score}%
+						h4 Competitors Average Score 
+							span #{competitorAvg}%
+						//- a(href="") View more Details
+						//- 	span.glyphicon.glyphicon-chevron-down
+						ul.list
+							each competitor in competitors
+								li #{competitor.company_name}
+									span.score #{competitor.score}%
+
+						h4 Search Engine Traffic
+							span #{searchVolume}&nbsp;
+								span / month
+						ul.list
+							li
+								span.glyphicon.glyphicon-new-window &nbsp;
+								a(href="https://adwords.google.com/KeywordPlanner") Search volume provided by Google Keyword Planner
+						ul.user_nav.list
+							li.btn-demo
+								p Your new site is waiting...
+								a(href="") Show Me
+				.col-sm-8
+					.mainsection
+						h2 Attract
+						table.auditTable
+							tr
+								td Does the website offer Thought Leadership information and/or commentary on current news?
+								if audit.tests[0] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Does the website provide Guides and/or Whitepapers on specific legal topics?
+								if audit.tests[1] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Does the website provide Case Study examples of the services provided?
+								if audit.tests[2] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Meta Title &amp; Description optimised for SRO?
+								if audit.tests[3] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+						h2 Engage
+						table.auditTable
+							tr
+								td Is the website design trustworthy, modern &amp; professional?
+								if audit.tests[4] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Simple &amp; intuitive menu system (UI)?
+								if audit.tests[5] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td No key information (Services, Guides, News, Case Stuides, Contacts) deeper than 3 levels (UI)
+								if audit.tests[6] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Is that page-load speed less than 1 second (UX)
+								if audit.tests[7] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Is the website responsive across multiple devices (UX)
+								if audit.tests[8] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Is white-space used to ensure pages are not overcrowded with text making it hard to take in?
+								if audit.tests[9] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Is there an individual page for each service offered?
+								if audit.tests[10] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Does the Service page contain all necessary elements?
+								if audit.tests[11] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+						h2 Convert
+						table.auditTable
+							tr
+								td Does each solicitor have a Profile/Biography page?
+								if audit.tests[12] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Does the Profile include a photograph of the lawyer?
+								if audit.tests[13] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Does the Profile link to Thought Leadership content produced by the lawyer?
+								if audit.tests[14] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Are contact details for the lawyer readily available from the profile?
+								if audit.tests[15] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Are Accreditations displayed where appropriate?
+								if audit.tests[16] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Are Testimonials shown on Services pages?
+								if audit.tests[17] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Is Contact information accessible on all pages?
+								if audit.tests[18] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove
+							tr
+								td Are there specific CTA Contact forms on Service pages?
+								if audit.tests[19] == 'checked'
+									td.glyphicon.glyphicon-ok
+								else
+									td.glyphicon.glyphicon-remove

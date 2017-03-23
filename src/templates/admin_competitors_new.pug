@@ -1,0 +1,136 @@
+extends admin_layout
+
+block content
+	#datablock(style="display: none", data-userid=`${user._id}`, data-username=`${user.fullname}`)
+
+	h1 Create a New Competitor
+	.form.postForm
+		.row
+			.col-sm-8
+				ul.list.postformList
+					li
+						h3 Company Name
+						input(type="text", id="q_company")
+					li
+						h3 Company Website
+						input(type="text", id="q_website")
+					li
+						h3 Attract
+						table
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_1")
+								td Does the website offer Thought Leadership information and/or commentary on current news?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_2")
+								td Does the website provide Guides and/or Whitepapers on specific legal topics?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_3")
+								td Does the website provide Case Study examples of the services provided?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_4")
+								td Meta Title &amp; Description optimised for SRO?
+
+					li
+						h3 Engage
+						table
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_5")
+								td Is the website design trustworthy, modern &amp; professional?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_6")
+								td Simple &amp; intuitive menu system (UI)?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_7")
+								td No key information (Services, Guides, News, Case Stuides, Contacts) deeper than 3 levels (UI)
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_8")
+								td Is that page-load speed less than 1 second (UX)
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_9")
+								td Is the website responsive across multiple devices (UX)
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_10")
+								td Is white-space used to ensure pages are not overcrowded with text making it hard to take in?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_11")
+								td Is there an individual page for each service offered?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_12")
+								td Does the Service page contain all necessary elements?
+
+					li
+						h3 Convert
+						table
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_13")
+								td Does each solicitor have a Profile/Biography page?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_14")
+								td Does the Profile include a photograph of the lawyer?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_15")
+								td Does the Profile link to Thought Leadership content produced by the lawyer?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_16")
+								td Are contact details for the lawyer readily available from the profile?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_17")
+								td Are Accreditations displayed where appropriate?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_18")
+								td Are Testimonials shown on Services pages?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_19")
+								td Is Contact information accessible on all pages?
+							tr
+								td.tableCb
+									input(type="checkbox" id="q_20")
+								td Are there specific CTA Contact forms on Service pages?
+
+			.col-sm-4
+				h3 Practice Areas
+				.paBox
+					select#practiceAreaSelect
+						option(value="") - Select Area -
+							each area in practiceAreas
+								option(value=`${area.name}`) #{area.name}
+					button.btn#addpa Add
+					ul.list.dynamicList#practiceAreaList
+						each area in practiceAreas
+							li
+								span x
+								p #{area.name}
+
+				
+				//- h3 Keywords
+				//- .paBox
+				//- 	input(type="text")#keywordInput
+				//- 	button.btn#addpa Add
+				//- 	ul.list.dynamicList#keywordList
+				h3 Score
+				span#score 0
+				span %
+
+		p.btn(href="", id="send_btn") Submit
+		img#spin(src="/static/img/spin.gif")
+		#error_box
+		#successBox

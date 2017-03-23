@@ -1,0 +1,191 @@
+
+var express = require('express');
+var admin = express.Router();
+var User = require('../models/user');
+var Post = require('../models/post');
+var Audit = require('../models/audit');
+var Competitor = require('../models/competitor');
+var PracticeArea = require('../models/practice_area');
+// var Category = require('../models/category');
+var Taxonomy = require('../models/taxonomy');
+
+var mid = require('../middleware');
+
+admin.get('/audits', mid.checkUserAdmin, function(req, res, next){
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        Audit.find({}, function(err, audits){
+
+            if(err){
+                next(err);
+            }else{
+                res.render('admin_audits', {
+                    title: 'Posts',
+                    user: req.thisUser,
+                    fullname: req.thisUser.fullname,
+                    audits: audits,
+                    admin_script: 'audits'
+                });
+            }
+
+        });
+
+    });
+
+});
+
+
+admin.get('/audits/new', mid.checkUserAdmin, function(req, res, next){
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+    	PracticeArea.find({}).exec(function(err, areas){
+
+    		res.render('admin_audits_new', {
+	            title: 'Create New Audit',
+	            practiceAreas: areas,
+	            user: req.thisUser,
+	            fullname: req.thisUser.fullname,
+	            admin_script: 'audits'
+	        });
+
+    	});
+
+    });
+
+});
+
+admin.get('/audits/:id', mid.checkUserAdmin, function(req, res, next){
+
+    let postid = req.params.id;
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        Audit.findOne({"_id": postid}, function(error, audit){
+
+            if(error){
+               // console.log(error);
+            }else{
+
+                PracticeArea.find({}).exec(function(err, areas){
+
+                    if(error){
+                        next(error);
+                    }else{
+
+                        res.render('admin_audits_edit', {
+                            title: 'Edit Audit',
+                            user: req.thisUser,
+                            fullname: req.thisUser.fullname,
+                            audit: audit,
+                            postid: postid,
+                            areas: areas,
+                            admin_script: 'audits'
+                        });
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+
+
+admin.get('/competitors', mid.checkUserAdmin, function(req, res, next){
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        Competitor.find({}, function(err, competitors){
+
+            if(err){
+                next(err);
+            }else{
+                res.render('admin_competitors', {
+                    title: 'Competitors',
+                    user: req.thisUser,
+                    fullname: req.thisUser.fullname,
+                    competitors: competitors,
+                    admin_script: 'competitors'
+                });
+            }
+
+        });
+
+    });
+
+});
+
+
+admin.get('/competitors/new', mid.checkUserAdmin, function(req, res, next){
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        PracticeArea.find({}).exec(function(err, areas){
+
+            res.render('admin_competitors_new', {
+                title: 'Create New Competitor',
+                user: req.thisUser,
+                fullname: req.thisUser.fullname,
+                practiceAreas: areas,
+                admin_script: 'competitors'
+            });
+
+        });
+
+    });
+
+});
+
+admin.get('/competitors/:id', mid.checkUserAdmin, function(req, res, next){
+
+    let postid = req.params.id;
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        Competitor.findOne({"_id": postid}, function(error, competitor){
+
+            if(error){
+               // console.log(error);
+            }else{
+
+                PracticeArea.find({}).exec(function(error, areas){
+
+                    if(error){
+                        next(error);
+                    }else{
+
+                        res.render('admin_competitors_edit', {
+                            title: 'Edit Competitor',
+                            user: req.thisUser,
+                            fullname: req.thisUser.fullname,
+                            competitor: competitor,
+                            areas: areas,
+                            postid: postid,
+                            admin_script: 'competitors'
+                        });
+
+                    }
+
+                });
+
+            }
+
+        });
+
+    });
+
+});
+
+
+
+
+
+
+module.exports = admin;

@@ -1,0 +1,631 @@
+* {
+	box-sizing: border-box;
+}
+
+body {
+	background: #fef1dc;
+}
+
+h1, h2, h3 {
+	font-family: 'Baloo Thambi', cursive;
+}
+
+p, li, input, button, a {
+	font-family: 'Nunito', sans-serif;
+}
+
+a {
+	color: auto;
+}
+
+img {
+	width: 100%;
+}
+
+.btn {
+	background: #2f416d;
+    color: #fff;
+}
+
+.btn:hover {
+	color: #fff;
+	opacity: 0.8;
+}
+
+label {
+    width: 140px;
+    font-size: 16px;
+    vertical-align: top;
+}
+
+/* dry classes */
+
+.delbtn {
+	cursor: pointer;
+}
+
+.delbtn:hover {
+	background: #dee;
+}
+
+.list {
+	list-style: none;
+	padding: 0px;
+}
+
+.toggleBox {
+    margin-bottom: 10px;
+}
+
+.toggleBox label {
+    width: auto !important;
+    margin-right: 10px;
+}
+
+.toggleBox #cb_toggle {
+    width: auto;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-width th {
+    background: #ddffee;
+    padding: 10px;
+}
+
+.full-width td {
+    padding: 10px;
+}
+
+header {
+	background: #2d2d2d;
+	padding: 10px 0px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
+}
+
+header h1 {
+	display: inline-block;
+    color: #fff;
+    margin: 0px;
+}
+
+header .list {
+    display: inline-block;
+    margin: 0px;
+    float: right;
+}
+
+header .list li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+header .list li a {
+    display: inline-block;
+    padding: 5px;
+    color: #fff;
+}
+
+
+#logout_btn {
+    float: right;
+    font-size: 18px;
+    background: rgb(255, 255, 255);
+    display: inline-block;
+    padding: 7px 15px;
+    color: #000;
+}
+
+.side_section {
+	width: 300px;
+    min-height: 1000px;
+    float: left;
+    background: #334369;
+    padding: 60px 0px 15px 0px;
+    position: fixed;
+}
+
+.side_section h1 {
+    color: #ffffff;
+    font-size: 26px;
+    background: #4a5f9e;
+    margin: 0px;
+    padding: 10px 15px;
+}
+
+.side_section li {
+    padding: 10px 15px;
+    font-size: 18px;
+}
+
+/*.side_section h2 {
+    color: #c7cfe0;
+}*/
+
+.side_section a {
+	color: #c7cfe0;
+}
+
+.side_taxonomies {
+    border-top: solid 2px #c7cfe0;
+}
+
+.side_taxonomies h2 {
+    margin-top: 10px;
+}
+
+.main_section {
+    padding: 70px 40px 40px 40px;
+	float: right;
+	background: #fff;
+	width: calc(100% - 300px);
+	min-height: 1000px;
+}
+
+.main_section h1 {
+	border-bottom: solid 4px;
+}
+
+.main_section .addnew {
+	margin-top: 20px;
+}
+
+.entity_list {
+	padding-right: 10px;
+}
+
+.entity_list > li {
+	background: #ddd;
+	padding: 0px 10px;
+}
+
+.entity_list > li:nth-child(even){
+	background: #cccccc;
+}
+
+.entity_list li a {
+	/*background: #ddd;*/
+	padding: 10px;
+	display: inline-block;
+	font-weight: bold;
+}
+
+.filter {
+	margin: 20px 0px 10px 0px;
+	padding: 5px;
+	width: 400px;
+}
+
+.form {
+	margin-top: 30px;
+}
+
+.form ul li {
+	margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.form .btn {
+	/*margin-top: 20px;*/
+ 	margin-top: 0px;
+}
+
+.form label {
+	width: 33%;
+}
+
+.form input,
+.form select {
+    width: 66%;
+}
+
+#error_box,
+.error_box {
+    margin-top: 20px;
+    background: #eee;
+    border-left: solid 4px #d81515;
+    padding: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+#successBox,
+.success_box {
+	margin-top: 20px;
+    background: #eee;
+    border-left: solid 4px #68e468;
+    padding: 10px;
+    font-weight: bold;
+    display: none;
+}
+
+.invalid {
+	border: solid 1px red;
+}
+
+.operations {
+	float: right;
+}
+
+.operations li {
+	display: inline-block;
+	padding: 0px 10px;
+}
+
+.operations li span {
+    display: inline-block;
+    padding: 4px;
+    border: solid 2px #c5c5c5;
+    border-radius: 5px;
+    margin-top: 4px;
+}
+
+/* business edit page */
+
+#delete_btn {
+    margin-left: 10px;
+    background: #bb3838;
+}
+
+.expand_select_p {
+	text-align: right;
+    padding: 10px;
+}
+
+/* Modal */
+
+.c_modal {
+	background: rgba(0,0,0,0.8);
+	z-index: 1;
+	width: 100%;
+	height: 1000px;
+	display: block;
+	position: fixed;
+	top: 0px;
+}
+
+.c_modal .box {
+    background: #fff;
+    /* position: absolute; */
+    width: 600px;
+    margin: 100px auto;
+    text-align: center;
+    padding: 30px;
+    border-radius: 5px;
+}
+
+/* Post Page */
+
+.postForm input,
+.postForm select {
+	width: 100%;
+	padding: 5px;
+}
+
+.post_section_menu li {
+	display: inline-block;
+    background: #b9ceff;
+    border-radius: 100%;
+    width: 60px;
+    height: 60px;
+    text-align: center;
+    padding-top: 18px;
+    border: solid 2px #8eabef;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.addcatbox {
+    border: solid 2px#7081ab;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: none;
+}
+
+.addcatbox input,
+.addcatbox select {
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.addcatbox button {
+	font-size: 16px;
+}
+
+.addcatbox label {
+    width: 100%;
+}
+
+.addcatbox select {
+
+}
+
+.expand_addcatbox {
+	margin-top: 0px !important;
+	margin-bottom: 10px !important;
+}
+
+/*#cats_err,
+#cats_success {
+    margin-left: 20px;
+}
+*/
+
+.catsSpin {
+    display: none;
+}
+
+.categories {
+	margin-top: 10px;
+}
+
+.categories > li {
+    border-bottom: solid 1px #ccc;
+    padding: 0px 0px 5px 0px;
+}
+
+.categories input,
+.categories label,
+.categories select {
+	width: auto;
+	vertical-align: middle;
+	margin: 0px;
+}
+
+.categories label {
+	margin: 0px 0px 0px 10px;
+	vertical-align: middle;
+}
+
+.categories ul {
+	display: inline-block;
+    float: right;
+}
+
+.categories ul li {
+	display: inline-block;
+	margin-right: 10px;
+}
+
+/* Featured img */
+
+#featImg_container {
+	position: relative;
+}
+
+#remove_img {
+	position: absolute;
+    background: rgba(0,0,0,0.4);
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: 22px;
+    padding-top: 20px;
+    display: none;
+    cursor: pointer;
+}
+
+#featImg_container:hover > div {
+	display: block;
+}
+
+/* Content Blocks */
+
+#cb {
+    display: none;
+}
+
+.contentBlock {
+    background: #eaeaea;
+    padding: 5px 5px 5px 5px;
+    border-radius: 3px;
+    border: solid 1px #d2d2d2;
+    cursor:all-scroll;
+}
+
+.contentBlock h4 {
+    margin-top: 5px;
+    width: calc(100% - 50px);
+    float: left;
+}
+
+.contentBlock .remove {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background: #8c8c8c;
+    border-radius: 100%;
+    text-align: center;
+    float: right;
+    color: #fff;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.contentBlock .remove:hover {
+    background: #000;
+}
+
+.contentBlock textarea {
+    width: 100%;
+    max-width: 100%;
+    min-height: 110px;
+    padding: 10px;
+    border: none;
+    border: solid 1px #ccc;
+    border-radius: 5px;
+}
+
+.contentBlock img {
+    width: auto;
+    max-width: 100%;
+}
+
+.htmlEdit {
+    background: #222;
+    color: #ddd;
+}
+
+/* Users */
+
+.isadmin {
+    margin-left: 15px;
+    display: inline-block;
+    color: #3c7546;
+}
+
+#q_admin,
+#q_changepassword {
+	width: auto;
+}
+
+#permissionsBox,
+#passwordBox {
+	border-top: solid 3px #b0b0d2;
+    margin-top: 10px;
+    display: none;
+}
+
+#permissionsBox input {
+	width: auto;
+    margin-right: 15px;
+}
+
+#passwordBox {
+	padding: 20px;
+}
+
+#passwordBox input {
+	margin-bottom: 10px;
+	width: 300px;
+	display: block;
+}
+
+#spin {
+    display: none;
+    width: 30px;
+}
+
+.term_list {
+    /*column-count: 3;
+    column-gap: 10px;*/
+    margin-top: 20px;
+}
+
+.termBox li {
+    margin-bottom: 10px;
+}
+
+.termBox input,
+.termBox select,
+.termBox textarea {
+    width: 220px;
+}
+
+.x {
+    background: #7d0000;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.term_list li .x {
+    float: left;
+}
+
+.term_list li p {
+    display: inline-block;
+}
+
+.term_list span {
+    font-weight: bold;
+    width: 130px;
+    float: left;
+    background: #bbbec7;
+    margin-right: 10px;
+    display: inline-block;
+    padding: 0px 0px;
+}
+
+table {
+    width: auto;
+    margin-bottom: 40px;
+}
+
+table th {
+    background: #ddffee;
+}
+
+table td {
+    border-bottom: solid 1px #dcdcdc;
+    padding: 15px 0px;
+}
+
+.tableCb {
+    width: 45px;
+}
+
+
+/* Practice areas */
+
+.paBox select {
+    width: 75%;
+    margin-right: 10px;
+}
+
+.paBox button {
+    
+}
+
+.dynamicList {
+    margin-top: 20px;
+}
+
+.dynamicList span {
+    display: inline-block;
+    background: #000;
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    border-radius: 100%;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.dynamicList p {
+    display: inline-block;
+}
+
+#keywordInput {
+    width: 80%;
+}
+
+#score {
+    font-size: 22px;
+}
+
+td.kw {
+   max-width: 400px;
+}
+
+span.kw {
+    margin-right: 10px;
+    border-bottom: solid 1px #ccc;
+}
+
+td a.edit {
+    margin-left: 15px;
+}

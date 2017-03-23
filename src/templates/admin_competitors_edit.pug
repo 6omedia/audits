@@ -1,0 +1,201 @@
+extends admin_layout
+
+block content
+	div(id="datablock", style="display: none", data-postid=`${postid}`)
+
+	h1 Edit, #{competitor.company_name}
+	.form.postForm
+		.row
+			.col-sm-8
+				ul.list.postformList
+					li
+						h3 Company Name
+						input(type="text", id="q_company", value=`${competitor.company_name}`)
+					li
+						h3 Company Website
+						input(type="text", id="q_website", value=`${competitor.company_website}`)
+					li
+						h3 Attract
+						table
+							tr
+								td.tableCb
+									if competitor.tests[0] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the website offer Thought Leadership information and/or commentary on current news?
+							tr
+								td.tableCb
+									if competitor.tests[1] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the website provide Guides and/or Whitepapers on specific legal topics?
+							tr
+								td.tableCb
+									if competitor.tests[2] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the website provide Case Study examples of the services provided?
+							tr
+								td.tableCb
+									if competitor.tests[3] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Meta Title &amp; Description optimised for SRO?
+
+					li
+						h3 Engage
+						table
+							tr
+								td.tableCb
+									if competitor.tests[4] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is the website design trustworthy, modern &amp; professional?
+							tr
+								td.tableCb
+									if competitor.tests[5] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Simple &amp; intuitive menu system (UI)?
+							tr
+								td.tableCb
+									if competitor.tests[6] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td No key information (Services, Guides, News, Case Stuides, Contacts) deeper than 3 levels (UI)
+							tr
+								td.tableCb
+									if competitor.tests[7] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is that page-load speed less than 1 second (UX)
+							tr
+								td.tableCb
+									if competitor.tests[8] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is the website responsive across multiple devices (UX)
+							tr
+								td.tableCb
+									if competitor.tests[9] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is white-space used to ensure pages are not overcrowded with text making it hard to take in?
+							tr
+								td.tableCb
+									if competitor.tests[10] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is there an individual page for each service offered?
+							tr
+								td.tableCb
+									if competitor.tests[11] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the Service page contain all necessary elements?
+
+					li
+						h3 Convert
+						table
+							tr
+								td.tableCb
+									if competitor.tests[12] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does each solicitor have a Profile/Biography page?
+							tr
+								td.tableCb
+									if competitor.tests[13] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the Profile include a photograph of the lawyer?
+							tr
+								td.tableCb
+									if competitor.tests[14] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Does the Profile link to Thought Leadership content produced by the lawyer?
+							tr
+								td.tableCb
+									if competitor.tests[15] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Are contact details for the lawyer readily available from the profile?
+							tr
+								td.tableCb
+									if competitor.tests[16] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Are Accreditations displayed where appropriate?
+							tr
+								td.tableCb
+									if competitor.tests[17] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Are Testimonials shown on Services pages?
+							tr
+								td.tableCb
+									if competitor.tests[18] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Is Contact information accessible on all pages?
+							tr
+								td.tableCb
+									if competitor.tests[19] == 'checked'
+										input(type="checkbox", checked=`${checked}`)
+									else
+										input(type="checkbox")
+								td Are there specific CTA Contact forms on Service pages?
+
+			.col-sm-4
+				h3 Practice Areas
+				.paBox
+					select#practiceAreaSelect
+						option(value="") - Select Area -
+							each area in areas
+								option(value=`${area.name}`) #{area.name}
+					button.btn#addpa Add
+					ul.list.dynamicList#practiceAreaList
+						each pa in competitor.practice_areas
+							li
+								span x
+								p #{pa}
+				//- h3 Keywords
+				//- .paBox
+				//- 	input(type="text")#keywordInput
+				//- 	button.btn#addpa Add
+				//- 	ul.list.dynamicList#keywordList
+				//- 		each kw in competitor.keywords
+				//- 			li
+				//- 				span x
+				//- 				p #{kw}
+				h3 Score
+				span#score #{competitor.score}
+				span %
+				//- include ./partials/_taxonomy-category-edit
+
+		p.btn(href="", id="update_btn") Update Audit
+		p.btn(id="delete_btn") Delete
+		img#spin(src="/static/img/spin.gif")
+		#error_box
+		#successBox
+	

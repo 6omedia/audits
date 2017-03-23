@@ -1,0 +1,34 @@
+extends admin_layout
+
+block content
+	h1 Competitors
+	a(href="/admin/competitors/new" class="btn addnew") Create New Competitor
+	br
+	input.filter(id="posts_filter", type="text", placeholder="filter...")
+
+	table.full-width
+		tr
+			th Company Name
+			th Website
+			th Practice Areas
+			th Score
+			th
+		each competitor in competitors
+			tr
+				td #{competitor.company_name}
+				td #{competitor.company_website}
+				td #{competitor.practice_areas}
+				td #{competitor.score}%
+				td
+					span.delete.delbtn(data-postid=`${competitor._id}`) Delete
+					a(href=`/admin/competitors/${competitor._id}`).edit Edit
+
+	//- ul.list.entity_list
+	//- 	each competitor in competitors
+	//- 		li
+	//- 			a(href=`/admin/competitors/${competitor._id}`) #{competitor.company_name}
+	//- 			ul.list.operations
+	//- 				li
+	//- 					span.delete.delbtn(data-postid=`${competitors._id}`) Delete
+	//- 				li
+	//- 					a(href=`/admin/competitors/${competitors._id}`) Edit

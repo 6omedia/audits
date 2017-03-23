@@ -1,0 +1,16 @@
+extends ./layout.pug
+block content
+
+	.container 
+		section
+			h1 #{post.title}
+			.content
+				if post.body.substring(0, 3) == '[{"'
+					each block in JSON.parse(post.body)
+						case block.blocktype
+							when 'HTML'
+								p !{block.blockvalue}
+							default
+								p #{block.blockvalue}
+				else
+					.div !{post.body}
