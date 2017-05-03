@@ -10,25 +10,39 @@ var PracticeArea = require('../models/practice_area');
 var Taxonomy = require('../models/taxonomy');
 
 var mid = require('../middleware');
+var frontend = require('../middleware/frontend');
 
-admin.get('/audits', mid.checkUserAdmin, function(req, res, next){
+admin.get('/audits/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
 
     mid.give_permission(req.thisUser, 'manage_posts', res, function(){
 
-        Audit.find({}, function(err, audits){
+        const path = req.path;
+        res.locals.path = path;
 
-            if(err){
-                next(err);
-            }else{
-                res.render('admin_audits', {
-                    title: 'Posts',
-                    user: req.thisUser,
-                    fullname: req.thisUser.fullname,
-                    audits: audits,
-                    admin_script: 'audits'
-                });
-            }
+        var docsPerPage = 30;
+        var pageNumber = req.params.pageNum;
+        var offset = (pageNumber * docsPerPage) - docsPerPage;
 
+        Audit.count({}, function(err, count){
+            Audit.find({}).skip(offset).limit(docsPerPage).sort({date: -1}).exec(function(err, audits){
+
+                if(err){
+                    next(err);
+                }else{
+
+                    const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/audits/page', count);
+
+                    res.render('admin_audits', {
+                        title: 'Posts',
+                        user: req.thisUser,
+                        fullname: req.thisUser.fullname,
+                        audits: audits,
+                        pageinationLinks: pageinationLinks,
+                        admin_script: 'audits'
+                    });
+                }
+
+            });
         });
 
     });
@@ -98,24 +112,37 @@ admin.get('/audits/:id', mid.checkUserAdmin, function(req, res, next){
 
 
 
-admin.get('/competitors', mid.checkUserAdmin, function(req, res, next){
+admin.get('/competitors/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
 
     mid.give_permission(req.thisUser, 'manage_posts', res, function(){
 
-        Competitor.find({}, function(err, competitors){
+        const path = req.path;
+        res.locals.path = path;
 
-            if(err){
-                next(err);
-            }else{
-                res.render('admin_competitors', {
-                    title: 'Competitors',
-                    user: req.thisUser,
-                    fullname: req.thisUser.fullname,
-                    competitors: competitors,
-                    admin_script: 'competitors'
-                });
-            }
+        var docsPerPage = 30;
+        var pageNumber = req.params.pageNum;
+        var offset = (pageNumber * docsPerPage) - docsPerPage;
 
+        Competitor.count({}, function(err, count){
+            Competitor.find({}).skip(offset).limit(docsPerPage).sort({date: -1}).exec(function(err, competitors){
+
+                if(err){
+                    next(err);
+                }else{
+
+                    const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/competitors/page', count);
+
+                    res.render('admin_competitors', {
+                        title: 'Competitors',
+                        user: req.thisUser,
+                        fullname: req.thisUser.fullname,
+                        competitors: competitors,
+                        pageinationLinks: pageinationLinks,
+                        admin_script: 'competitors'
+                    });
+                }
+
+            });
         });
 
     });

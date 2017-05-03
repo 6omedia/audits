@@ -12,6 +12,10 @@ block content
 				a(href=`/admin/audits/${audit._id}`) #{audit.company_name}
 				ul.list.operations
 					li
+						a(href=`/audit/${audit.company_slug}`) View Audit
+					li
 						span.delete.delbtn(data-postid=`${audit._id}`) Delete
 					li
 						a(href=`/admin/audits/${audit._id}`) Edit
+
+	p !{pageinationLinks}

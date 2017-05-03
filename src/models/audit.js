@@ -14,6 +14,7 @@ var AuditSchema = new mongoose.Schema(
 			unique: true
 		},
 		practice_areas: Array,
+		postcode: String,
 		screenshot: String,
 		tests: Array,
 		competitors: Array

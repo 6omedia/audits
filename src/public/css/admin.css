@@ -38,6 +38,10 @@ label {
     vertical-align: top;
 }
 
+video {
+    width: 400px;
+}
+
 /* dry classes */
 
 .delbtn {
@@ -122,7 +126,7 @@ header .list li a {
 }
 
 .side_section {
-	width: 300px;
+	width: 170px;
     min-height: 1000px;
     float: left;
     background: #334369;
@@ -132,7 +136,7 @@ header .list li a {
 
 .side_section h1 {
     color: #ffffff;
-    font-size: 26px;
+    font-size: 20px;
     background: #4a5f9e;
     margin: 0px;
     padding: 10px 15px;
@@ -149,6 +153,7 @@ header .list li a {
 
 .side_section a {
 	color: #c7cfe0;
+    font-size: 16px;
 }
 
 .side_taxonomies {
@@ -163,7 +168,7 @@ header .list li a {
     padding: 70px 40px 40px 40px;
 	float: right;
 	background: #fff;
-	width: calc(100% - 300px);
+	width: calc(100% - 170px);
 	min-height: 1000px;
 }
 
@@ -429,6 +434,7 @@ header .list li a {
     border-radius: 3px;
     border: solid 1px #d2d2d2;
     cursor:all-scroll;
+    overflow: hidden;
 }
 
 .contentBlock h4 {
@@ -437,7 +443,8 @@ header .list li a {
     float: left;
 }
 
-.contentBlock .remove {
+.contentBlock .remove,
+.mediaFilesList .remove {
     display: inline-block;
     width: 25px;
     height: 25px;
@@ -628,4 +635,72 @@ span.kw {
 
 td a.edit {
     margin-left: 15px;
+}
+
+#q_postcode {
+    width: 200px;
+}
+
+.mediaFilesList li {
+    width: 300px;
+    height: 300px;
+    float: left;
+    background: #ccc;
+    margin: 20px;
+    padding: 20px;
+    width: 300px;
+    height: 300px;
+    float: left;
+    background: #f1f1f1;
+    margin: 20px;
+    box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+    padding: 20px;
+    position: relative;
+}
+
+.mediaFilesList li img {
+    width: 260px;
+    height: 260px;
+    object-fit: contain;
+    object-position: 50% 50%;
+}
+
+.mediaFilesList .remove {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: #333;
+}
+
+.media-videos li {
+    height: auto;
+}
+
+.media-videos video {
+    width: 100%;
+}
+
+/*                                                    LAP TOP
+ ******************************************************************************************************************************/
+
+@media (min-width: 992px) {
+    
+    
+
+}
+
+
+/*                                                    DESK TOP
+ ******************************************************************************************************************************/
+
+@media (min-width: 1400px) {
+    
+    .side_section {
+        width: 250px;
+    }
+
+    .main_section {
+        width: calc(100% - 250px);
+    }
+    
 }

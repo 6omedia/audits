@@ -20,6 +20,7 @@ api.post('/add_audit', mid.checkUserAdmin, function(req, res, next){
 			company_name: req.body.company_name,
             company_slug: req.body.company_slug,
 			company_website: req.body.company_website,
+            postcode: req.body.postcode,
 			practice_areas: JSON.parse(req.body.practice_areas),
 			screenshot: req.body.screenshot,
 			tests: JSON.parse(req.body.tests)
@@ -55,6 +56,8 @@ api.post('/update_audit', mid.checkUserAdmin, function(req, res, next){
             $set: {
                 company_name: req.body.company_name,
                 company_slug: req.body.company_slug,
+                company_website: req.body.company_website,
+                postcode: req.body.postcode,
 				practice_areas: JSON.parse(req.body.practice_areas),
 				screenshot: req.body.screenshot,
 				tests: JSON.parse(req.body.tests)
@@ -82,6 +85,7 @@ api.post('/add_competitor', mid.checkUserAdmin, function(req, res, next){
         {
             company_name: req.body.company_name,
             company_website: req.body.company_website,
+            postcode: req.body.postcode,
             practice_areas: JSON.parse(req.body.practice_areas),
             tests: JSON.parse(req.body.tests),
             score: req.body.score
@@ -117,6 +121,7 @@ api.post('/update_competitor', mid.checkUserAdmin, function(req, res, next){
             $set: {
                 company_name: req.body.company_name,
                 company_website: req.body.company_website,
+                postcode: req.body.postcode,
                 practice_areas: JSON.parse(req.body.practice_areas),
                 tests: JSON.parse(req.body.tests),
                 score: req.body.score

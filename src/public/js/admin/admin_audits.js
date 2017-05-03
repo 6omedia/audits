@@ -35,6 +35,13 @@ const formInfo = {
 			elem: $('#featImg_container img'),
 			value: '',
 			required: false
+		},
+		{
+			feildName: 'Postcode',
+			elem: $('#q_postcode'),
+			value: '',
+			error: 'Postcode Required',
+			required: true
 		}
 	]
 }
@@ -74,6 +81,7 @@ const auditManager = new PostManager(addUrl, updateUrl, 'Audit', auditForm, '', 
 			company_name: auditForm.requiredFeilds[0].value,
             company_slug: auditForm.requiredFeilds[1].value,
 			company_website: auditForm.requiredFeilds[2].value,
+			postcode: auditForm.requiredFeilds[4].value,
 			practice_areas: JSON.stringify(paList),
 			screenshot: feat_img,
 			tests: JSON.stringify(tests)
@@ -82,6 +90,7 @@ const auditManager = new PostManager(addUrl, updateUrl, 'Audit', auditForm, '', 
 			company_name: auditForm.requiredFeilds[0].value,
 			company_slug: auditForm.requiredFeilds[1].value,
 			company_website: auditForm.requiredFeilds[2].value,
+			postcode: auditForm.requiredFeilds[4].value,
 			practice_areas: JSON.stringify(paList),
 			screenshot: feat_img,
 			tests: JSON.stringify(tests),
