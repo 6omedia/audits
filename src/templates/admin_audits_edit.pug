@@ -4,6 +4,7 @@ block content
 	div(id="datablock", style="display: none", data-postid=`${postid}`)
 
 	h1 Edit, #{audit.company_name}'s Audit
+	a(href=`/audit/${audit.company_slug}`) View Audit
 	.form.postForm
 		.row
 			.col-sm-8
@@ -17,6 +18,9 @@ block content
 					li
 						h3 Company Website
 						input(type="text", id="q_website", value=`${audit.company_website}`)
+					li
+						h3 Postcode
+						input(type="text", id="q_postcode", value=`${audit.postcode}`)
 					li
 						h3 Attract
 						table

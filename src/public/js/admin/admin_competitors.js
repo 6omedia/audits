@@ -21,6 +21,13 @@ const formInfo = {
 			value: '',
 			error: 'Website required',
 			required: true
+		},
+		{
+			feildName: 'Postcode',
+			elem: $('#q_postcode'),
+			value: '',
+			error: 'Postcode Required',
+			required: true
 		}
 	]
 }
@@ -59,6 +66,7 @@ const competitorManager = new PostManager(addUrl, updateUrl, 'Competitor', compe
 		create: {
 			company_name: competitorForm.requiredFeilds[0].value,
 			company_website: competitorForm.requiredFeilds[1].value,
+			postcode: competitorForm.requiredFeilds[2].value,
 			practice_areas: JSON.stringify(paList),
 			tests: JSON.stringify(tests),
 			score: $('#score').text()
@@ -66,6 +74,7 @@ const competitorManager = new PostManager(addUrl, updateUrl, 'Competitor', compe
 		update: {
 			company_name: competitorForm.requiredFeilds[0].value,
 			company_website: competitorForm.requiredFeilds[1].value,
+			postcode: competitorForm.requiredFeilds[2].value,
 			practice_areas: JSON.stringify(paList),
 			tests: JSON.stringify(tests),
 			score: $('#score').text(),

@@ -23,6 +23,8 @@ block content
 					span.delete.delbtn(data-postid=`${competitor._id}`) Delete
 					a(href=`/admin/competitors/${competitor._id}`).edit Edit
 
+	p !{pageinationLinks}
+
 	//- ul.list.entity_list
 	//- 	each competitor in competitors
 	//- 		li

@@ -4,8 +4,11 @@ var cms_admin = express.Router();
 var User = require('../../models/user');
 var Post = require('../../models/post');
 var Taxonomy = require('../../models/taxonomy');
+var fs = require('fs');
+var dir = require('node-dir');
 
 var mid = require('../../middleware');
+var frontend = require('../../middleware/frontend');
 
 // admin dashboard
 
@@ -19,24 +22,37 @@ cms_admin.get('/', mid.checkUserAdmin, function(req, res, next){
 
 });
 
-cms_admin.get('/posts', mid.checkUserAdmin, function(req, res, next){
+cms_admin.get('/posts/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
 
     mid.give_permission(req.thisUser, 'manage_posts', res, function(){
 
-        Post.find({}, function(err, posts){
+        const path = req.path;
+        res.locals.path = path;
 
-            if(err){
-                next(err);
-            }else{
-                res.render('admin_posts', {
-                    title: 'Posts',
-                    user: req.thisUser,
-                    fullname: req.thisUser.fullname,
-                    posts: posts,
-                    admin_script: 'posts'
-                });
-            }
+        var docsPerPage = 30;
+        var pageNumber = req.params.pageNum;
+        var offset = (pageNumber * docsPerPage) - docsPerPage;
 
+        Post.count({}, function(err, count){
+            Post.find({}).skip(offset).limit(docsPerPage).sort({date: -1}).exec(function(err, posts){
+
+                if(err){
+                    next(err);
+                }else{
+
+                    const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/posts/page', count);
+
+                    res.render('admin_posts', {
+                        title: 'Posts',
+                        user: req.thisUser,
+                        fullname: req.thisUser.fullname,
+                        posts: posts,
+                        pageinationLinks: pageinationLinks,
+                        admin_script: 'posts'
+                    });
+                }
+
+            });
         });
 
     });
@@ -223,8 +239,6 @@ cms_admin.get('/taxonomies/:tax_name', mid.checkUserAdmin, function(req, res, ne
 
         const taxName = mid.allTitleCase(tax_name);
 
-        console.log("Tax name: ", taxName);
-
         Taxonomy.findOne({"taxonomy_name": taxName}).sort({"taxonomy_terms.parent": 1}).exec(function(error, taxonomy){
 
             if(error){
@@ -242,6 +256,56 @@ cms_admin.get('/taxonomies/:tax_name', mid.checkUserAdmin, function(req, res, ne
             }
 
         });
+
+    });
+
+});
+
+cms_admin.get('/media/images', mid.checkUserAdmin, function(req, res, next){
+
+    fs.readdir('./src/public/uploads/posts', function(err, files) {
+        
+        if (err){
+
+            console.log(err);
+
+        }else{
+
+            res.render('admin_media', {
+                title: 'Admin Media',
+                h1: 'Images',
+                type: 'images',
+                user: req.thisUser,
+                files: files,
+                admin_script: 'media'
+            });
+
+        }
+
+    });
+
+});
+
+cms_admin.get('/media/videos', mid.checkUserAdmin, function(req, res, next){
+
+    fs.readdir('./src/public/uploads/videos', function(err, files) {
+        
+        if (err){
+
+            console.log(err);
+
+        }else{
+
+            res.render('admin_media', {
+                title: 'Admin Media',
+                h1: 'Videos',
+                type: 'videos',
+                user: req.thisUser,
+                files: files,
+                admin_script: 'media'
+            });
+
+        }
 
     });
 

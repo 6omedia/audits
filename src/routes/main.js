@@ -95,7 +95,8 @@ main.get('/audit/:companyslug', function(req, res, next){
                             {
                                 'practice_areas': {
                                     $in: audit.practice_areas
-                                }
+                                },
+                                'postcode': audit.postcode
                             }
                         ).limit(3).sort({score: -1}).exec(function(err, competitors){
 
