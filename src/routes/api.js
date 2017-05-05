@@ -148,10 +148,10 @@ api.post('/add_test', mid.checkUserAdmin, function(req, res, next){
 
     const test = new Test(
         {
+            short: req.body.short,
             question: req.body.question,
             help: req.body.help,
-            helpImg: req.body.helpImg,
-            short: req.body.short
+            helpImg: req.body.helpImg
         }
     );
 
@@ -188,10 +188,10 @@ api.post('/update_test', mid.checkUserAdmin, function(req, res, next){
         }, 
         {
             $set: {
+                short: req.body.short,
                 question: req.body.question,
                 help: req.body.help,
-                helpImg: req.body.helpImg,
-                short: req.body.short
+                helpImg: req.body.helpImg
             }
         },
         function(err, affected, resp){
@@ -203,6 +203,7 @@ api.post('/update_test', mid.checkUserAdmin, function(req, res, next){
                 Test.find({}).sort({ $natural: 1 }).exec(function(err, tests){
 
                     if(err){
+                        data.error = err;
                         res.send(data);
                     }else{
 

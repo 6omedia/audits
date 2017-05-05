@@ -46,7 +46,7 @@ header {
     background: #d32f2f;
     /*padding: 10px 15px;*/
     padding: 20px 0px;
-    margin-bottom: 40px;
+    /*margin-bottom: 40px;*/
 }
 
 header h1 {
@@ -56,7 +56,7 @@ header h1 {
 }
 
 .lsH1 {
-	font-size: 46px;
+	font-size: 28px;
 	color: #fff;
     font-weight: bold;
     margin: 0px;
@@ -64,9 +64,31 @@ header h1 {
 }
 
 header h1 span {
-	font-size: 46px;
+	font-size: 28px;
 	color: #fff;
     font-weight: normal;
+}
+
+.theBox {
+    display: block;
+    margin: 0px auto;
+    width: 350px;
+    background: #ffe5e5;
+    text-align: center;
+    color: #c32424;
+    padding: 5px;
+    font-size: 16px;
+    margin-bottom: 20px;
+    border: solid 1px #ffc9c9;
+}
+
+.theBox p {
+    margin: 0px;
+}
+
+.desc {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
 .user_nav {
@@ -124,6 +146,12 @@ header h1 span {
     transition: 0.5s;
     background: #fff392;
     box-shadow: 0px 0px 30px rgba(0, 31, 78, 0.23);
+}
+
+#homepage h1 {
+    text-align: center;
+    margin: 40px 0px 20px 0px;
+    font-size: 30px;
 }
 
 table {
@@ -364,7 +392,7 @@ footer p {
 @media (min-width: 992px) {
     
     .website-summary p {
-        font-size: 20px;
+        font-size: 16px;
     }
 
     #screenshots img:nth-child(2) {

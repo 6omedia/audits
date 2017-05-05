@@ -179,6 +179,7 @@ function updateTest(td){
 				testForm.successBox.html('Test Updated').slideDown();
 				updateTable(data.tests);
 			}else{	
+				console.log('Data: ', data);
 				testForm.errorBox.html('Something went wrong, please try again later...').slideDown();
 			}
 		},
