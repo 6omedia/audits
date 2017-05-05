@@ -51,7 +51,7 @@ const postProductManager = new PostManager(addUrl, updateUrl, 'Post', postForm, 
 
 	const catArray = this.getCheckedCats(taxInfo);
 
-	console.log('catArray: ', catArray);
+	// console.log('catArray: ', catArray);
 
 	const user_id = $('#datablock').data('userid');
 	const user_name = $('#datablock').data('username');

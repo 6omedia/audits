@@ -14,6 +14,7 @@ var Post = require('../../models/post');
 var Taxonomy = require('../../models/taxonomy');
 var Competitor = require('../../models/competitor');
 var Audit = require('../../models/audit');
+var Test = require('../../models/test');
 
 var path = require('path');
 var formidable = require('formidable');
@@ -218,6 +219,29 @@ cms_api.post('/delete', mid.checkUserAdmin, function(req, res, next){
               }else{
                 data.success = '1';
                 res.send(data);
+              }
+            });
+
+        break;
+        case 'test':
+
+            Test.remove({ "_id" : req.body.itemid }, function(err){
+              if(err){
+                res.send(data);
+              }else{
+
+                Test.find({}).exec(function(err, tests){
+
+                    if(err){
+                        res.send(data);
+                    }else{
+                        data.tests = tests;
+                        data.success = '1';
+                        res.send(data);
+                    }
+
+                });
+
               }
             });
 

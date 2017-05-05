@@ -16,7 +16,9 @@ body
 					li
 						a(href="/admin/audits/page/1") Audits
 					li
-						a(href="/admin/competitors/page/1") Competitors			
+						a(href="/admin/competitors/page/1") Competitors
+					li
+						a(href="/admin/tests") Tests		
 
 		//- h1 Taxonomies
 		//- ul.list
@@ -71,3 +73,6 @@ body
 		when 'media'
 			script(src='/static/js/admin/media_manager.js')
 			script(src='/static/js/admin/admin_media.js')
+		when 'tests'
+			script(src='/static/js/admin/image_uploader.js')
+			script(src='/static/js/admin/admin_tests.js')

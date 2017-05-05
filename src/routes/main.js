@@ -4,6 +4,7 @@ var main = express.Router();
 var User = require('../models/user');
 var Post = require('../models/post');
 var Audit = require('../models/audit');
+var Test = require('../models/test');
 var Competitor = require('../models/competitor');
 var PracticeArea = require('../models/practice_area');
 // var Category = require('../models/category');
@@ -66,8 +67,6 @@ main.get('/audit/:companyslug', function(req, res, next){
                     }
                 });
 
-                //console.log('practiceAreas from audit ', audit.practice_areas);
-
                 PracticeArea.find(
                     {
                         'name': {
@@ -118,13 +117,24 @@ main.get('/audit/:companyslug', function(req, res, next){
 
                                 let competitorAvg = getAvg();
 
-                                res.render('audit', {
-                                    title: 'Audit for ' + audit.company_name,
-                                    audit: audit,
-                                    searchVolume: searchVolume,
-                                    competitors: competitors,
-                                    competitorAvg: competitorAvg,
-                                    score: score
+                                Test.find({}).exec(function(err, tests){
+
+                                    if(err){
+                                        next();
+                                    }else{
+
+                                        res.render('audit', {
+                                            title: 'Audit for ' + audit.company_name,
+                                            audit: audit,
+                                            searchVolume: searchVolume,
+                                            competitors: competitors,
+                                            competitorAvg: competitorAvg,
+                                            tests: tests,
+                                            score: score
+                                        });
+
+                                    }
+
                                 });
 
                             }

@@ -32,6 +32,11 @@ a, a:hover, a:focus, a:active {
 	text-decoration: none;
 }
 
+p {
+    letter-spacing: 0.04em;
+    line-height: 1.6em;
+}
+
 .list {
 	list-style: none;
 	padding: 0px;
@@ -143,6 +148,7 @@ table td.glyphicon-remove {
     width: 100%;
     text-align: center;
     font-size: 20px;
+    padding-right: 10px;
 }
 
 table td.glyphicon-ok {
@@ -152,6 +158,12 @@ table td.glyphicon-ok {
 table td.glyphicon-remove {
     color: #cc4949;
 }
+
+/*.tbl_container {
+    width: 31%;
+    float: left;
+    margin-right: 2%;
+}*/
 
 .website-summary {
 	padding: 20px;
@@ -229,6 +241,52 @@ span.score {
     height: 200px;
 }
 
+.failedTest {
+    clear: both;
+}
+
+.failedTest h3 {
+    font-size: 28px;
+}
+
+.failedTest h4 {
+    font-size: 24px;
+    margin: 30px 0px 0px 0px;
+}
+
+.failedTest p {
+    margin: 20px 0px 20px 0px;
+    font-size: 18px;
+}
+
+.helpBox {
+    background: #efefef;
+    padding: 15px;
+    margin: 20px 0px;
+    border: solid 1px #e2e2e2;
+    font-size: 18px;
+}
+
+.helpBox p {
+    margin: 0px;
+    color: #525252;
+    letter-spacing: 0.04em;
+    line-height: 1.6em;
+}
+
+.helpBox span {
+    float: left;
+    color: #cc4949;
+    vertical-align: sub;
+    font-size: 22px;
+    margin-right: 10px;
+    margin-top: 2px;
+}
+
+hr {
+    margin-bottom: 40px;
+}
+
 footer {
     background: #d32f2f;
     color: #fff;
@@ -290,6 +348,12 @@ footer p {
 
     .website-summary h3 {
         font-size: 22px;
+    }
+
+    .tbl_container {
+        width: 31%;
+        float: left;
+        margin-right: 2%;
     }
 
 }

@@ -1,0 +1,74 @@
+extends admin_layout
+
+block content
+	h1 Tests
+
+	//- .addTestBox
+	//- 	label Test Question
+	//- 	input(type="text" id="q_question")
+	//- 	label Information for failed test
+	//- 	input(type="text" id="q_help")
+	//- 	button#submitBtn Add Test
+
+
+	//- table.full-width
+	//- 	tr
+	//- 		td
+	//- 		td 
+	//- 			input(type="text" id="q_question" placeholder="Test Question...")
+	//- 		td
+	//- 			input(type="text" id="q_help" placeholder="Information for failed test...")
+	//- 		td
+	//- 			button#submitBtn Add Test
+	#error_box
+	#successBox
+	br
+	table.full-width#testTable
+		tr
+			th Test Number
+			th Short
+			th Question
+			th Help
+			th Image
+			th
+		tr
+			td Add a New Test
+			td 
+				input(type="text" id="q_short" placeholder="Short Question...")
+			td 
+				input(type="text" id="q_question" placeholder="Test Question...")
+			td
+				input(type="text" id="q_help" placeholder="Information for failed test...")
+			td
+				input(id="upload-input" type="file" name="uploads[]" multiple="multiple")
+				.progress
+					.progress-bar(role="progressbar")#feat_img_prog
+				img(src="/static/img/landscape.png")#testImg
+			td
+				button#submitBtn Add Test
+				img(src="/static/img/spin.gif")#spin
+		each test, index in tests
+			tr(data-postid=`${test._id}`)
+				td #{index + 1}
+				td(contenteditable="true").editable #{test.short}
+				td(contenteditable="true").editable #{test.question}
+				td(contenteditable="true").editable #{test.help}
+				td
+					input(type="file" name="uploads[]" multiple="multiple").testImgInput
+					.progress
+						.progress-bar(role="progressbar").testProg
+					if test.helpImg != undefined
+						img(src=`${test.helpImg}`).editImg
+					else
+						img(src="/static/img/landscape.png").editImg
+				td
+					span.delete.delbtn(data-postid=`${test._id}`) Delete
+					//- span.update Update
+
+	//- ul.list.entity_list#audit_list
+	//- 	each test in audits
+	//- 		li
+	//- 			a(href=`/admin/audits/${audit._id}`) #{audit.company_name}
+	//- 			ul.list.operations
+	//- 				li
+	//- 					span.delete.delbtn(data-postid=`${test._id}`) Delete

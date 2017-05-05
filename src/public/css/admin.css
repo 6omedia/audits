@@ -81,6 +81,7 @@ video {
 
 .full-width td {
     padding: 10px;
+    vertical-align: top;
 }
 
 header {
@@ -584,7 +585,6 @@ table td {
     width: 45px;
 }
 
-
 /* Practice areas */
 
 .paBox select {
@@ -679,6 +679,54 @@ td a.edit {
 .media-videos video {
     width: 100%;
 }
+
+#testTable th:nth-child(1),
+#testTable td:nth-child(1) {
+    width: 10%;
+}
+#testTable th:nth-child(2),
+#testTable td:nth-child(2) {
+    width: 20%;
+/*    background: #ccc;*/
+}
+#testTable th:nth-child(3),
+#testTable td:nth-child(3) {
+    width: 20%;
+ /*   background: firebrick;*/
+}
+#testTable th:nth-child(4),
+#testTable td:nth-child(4) {
+    width: 20%;
+ /*   background: lightsteelblue;*/
+}
+#testTable th:nth-child(5),
+#testTable td:nth-child(5) {
+ /*   background: coral;*/
+    width: 20%;
+}
+#testTable th:nth-child(6),
+#testTable td:nth-child(6) {
+ /*   background: coral;*/
+    width: 10%;
+}
+
+#testTable input {
+    width: 100%;
+}
+
+.update {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+#testTable img {
+    width: auto;
+    height: 80px;
+}
+
+/*td.editable {
+    background: #fff7e4;
+}*/
 
 /*                                                    LAP TOP
  ******************************************************************************************************************************/

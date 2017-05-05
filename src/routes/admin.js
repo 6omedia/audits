@@ -4,6 +4,7 @@ var admin = express.Router();
 var User = require('../models/user');
 var Post = require('../models/post');
 var Audit = require('../models/audit');
+var Test = require('../models/test');
 var Competitor = require('../models/competitor');
 var PracticeArea = require('../models/practice_area');
 // var Category = require('../models/category');
@@ -210,9 +211,32 @@ admin.get('/competitors/:id', mid.checkUserAdmin, function(req, res, next){
 
 });
 
+admin.get('/tests', mid.checkUserAdmin, function(req, res, next){
 
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
 
+        Test.find({}).exec(function(err, tests){
 
+            if(err){
+                next(err);
+            }else{
 
+                res.render('admin_tests', {
+                    title: 'Tests',
+                    user: req.thisUser,
+                    fullname: req.thisUser.fullname,
+                    tests: tests,
+                    admin_script: 'tests'
+                });
+
+            }
+
+        });
+
+    });
+
+});
 
 module.exports = admin;
+
+

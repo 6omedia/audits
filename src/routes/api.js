@@ -4,6 +4,7 @@ var api = express.Router();
 var User = require('../models/user');
 var Post = require('../models/post');
 var Audit = require('../models/audit');
+var Test = require('../models/test');
 var Competitor = require('../models/competitor');
 // var Category = require('../models/category');
 var Taxonomy = require('../models/taxonomy');
@@ -134,6 +135,84 @@ api.post('/update_competitor', mid.checkUserAdmin, function(req, res, next){
             }else{
                 data.success = '1';
                 res.send(data);
+            }
+        }
+    );
+
+});
+
+api.post('/add_test', mid.checkUserAdmin, function(req, res, next){
+
+    let data = {};
+    data.success = '0';
+
+    const test = new Test(
+        {
+            question: req.body.question,
+            help: req.body.help,
+            helpImg: req.body.helpImg,
+            short: req.body.short
+        }
+    );
+
+    //save model to MongoDB
+    test.save(function(err) {
+
+        if(err) {
+            data.error = err;
+            res.send(data);
+        }else{
+
+            Test.find({}).exec(function(err, tests){
+
+                data.success = '1';
+                data.tests = tests;
+                res.send(data);
+            
+            });
+        }
+
+    });
+
+});
+
+api.post('/update_test', mid.checkUserAdmin, function(req, res, next){
+
+    let data = {};
+    data.success = '0';
+    const postid = req.body.testId;
+
+    Test.update(
+        {
+            "_id": postid
+        }, 
+        {
+            $set: {
+                question: req.body.question,
+                help: req.body.help,
+                helpImg: req.body.helpImg,
+                short: req.body.short
+            }
+        },
+        function(err, affected, resp){
+            if(err){
+                data.error = err;
+                res.send(data);
+            }else{
+
+                Test.find({}).exec(function(err, tests){
+
+                    if(err){
+                        res.send(data);
+                    }else{
+
+                        data.success = '1';
+                        data.tests = tests;
+                        res.send(data);
+                    }
+
+                });
+
             }
         }
     );

@@ -35,129 +35,65 @@ block content
 								a(href="") Show Me
 				.col-sm-8
 					.mainsection
-						h2 Attract
-						table.auditTable
-							tr
-								td Does the website offer Thought Leadership information and/or commentary on current news?
-								if audit.tests[0] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Does the website provide Guides and/or Whitepapers on specific legal topics?
-								if audit.tests[1] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Does the website provide Case Study examples of the services provided?
-								if audit.tests[2] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Meta Title &amp; Description optimised for SRO?
-								if audit.tests[3] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-						h2 Engage
-						table.auditTable
-							tr
-								td Is the website design trustworthy, modern &amp; professional?
-								if audit.tests[4] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Simple &amp; intuitive menu system (UI)?
-								if audit.tests[5] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td No key information (Services, Guides, News, Case Stuides, Contacts) deeper than 3 levels (UI)
-								if audit.tests[6] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Is that page-load speed less than 1 second (UX)
-								if audit.tests[7] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Is the website responsive across multiple devices (UX)
-								if audit.tests[8] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Is white-space used to ensure pages are not overcrowded with text making it hard to take in?
-								if audit.tests[9] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Is there an individual page for each service offered?
-								if audit.tests[10] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Does the Service page contain all necessary elements?
-								if audit.tests[11] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-						h2 Convert
-						table.auditTable
-							tr
-								td Does each solicitor have a Profile/Biography page?
-								if audit.tests[12] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Does the Profile include a photograph of the lawyer?
-								if audit.tests[13] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Does the Profile link to Thought Leadership content produced by the lawyer?
-								if audit.tests[14] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Are contact details for the lawyer readily available from the profile?
-								if audit.tests[15] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Are Accreditations displayed where appropriate?
-								if audit.tests[16] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Are Testimonials shown on Services pages?
-								if audit.tests[17] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Is Contact information accessible on all pages?
-								if audit.tests[18] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
-							tr
-								td Are there specific CTA Contact forms on Service pages?
-								if audit.tests[19] == 'checked'
-									td.glyphicon.glyphicon-ok
-								else
-									td.glyphicon.glyphicon-remove
+						.tbl_container
+							h2 Attract
+							table.auditTable
+								- var attIndex = 0;
+								while attIndex < 4
+
+									if audit.tests[attIndex] == 'checked'
+										tr
+											td.glyphicon.glyphicon-ok
+											td #{tests[attIndex].short}											
+									else
+										tr
+											td.glyphicon.glyphicon-remove
+											td #{tests[attIndex].short}
+
+									- attIndex++
+						.tbl_container
+							h2 Engage
+							table.auditTable
+								- var engIndex = 4;
+								while engIndex < 12
+
+									if audit.tests[engIndex] == 'checked'
+										tr
+											td.glyphicon.glyphicon-ok
+											td #{tests[engIndex].short}
+									else
+										tr
+											td.glyphicon.glyphicon-remove
+											td #{tests[engIndex].short}
+
+									- engIndex++
+						.tbl_container
+							h2 Convert
+							table.auditTable
+								- var conIndex = 12;
+								while conIndex < 20
+
+									if audit.tests[conIndex] == 'checked'
+										tr
+											td.glyphicon.glyphicon-ok
+											td #{tests[conIndex].short}
+									else
+										tr
+											td.glyphicon.glyphicon-remove
+											td #{tests[conIndex].short}
+
+									- conIndex++
+
+						h2 What this website is missing
+
+						each testResult, index in audit.tests
+							if testResult != 'checked'
+								.failedTest
+									h3 #{tests[index].short}
+									.helpBox
+										span.glyphicon.glyphicon-remove
+										p This website does not #{tests[index].question}
+									img(src=`${tests[index].helpImg}`)
+									h4 Recommendations
+									p #{tests[index].help}
+									hr

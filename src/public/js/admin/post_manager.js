@@ -36,12 +36,12 @@ class PostManager {
 
 		// let update = false;
 
-		console.log('update ', update);
+		// console.log('update ', update);
 
 		let ajax_data = this.getDataToSend(update);
 
 		if(ajax_data == 'invalid'){
-			console.log('retuern');
+			// console.log('retuern');
 			return;
 		}
 
@@ -51,7 +51,7 @@ class PostManager {
 			ajax_data = ajax_data.create;
 		}
 
-		console.log(ajax_data);
+		// console.log(ajax_data);
 		const pManager = this;
 
 		$.ajax({
@@ -62,7 +62,7 @@ class PostManager {
 			success: function(data)
 			{
 
-				console.log('data ', data);
+				// console.log('data ', data);
 
 				pManager.postsForm.enableSubmit();
 				if(data.success == '1'){
