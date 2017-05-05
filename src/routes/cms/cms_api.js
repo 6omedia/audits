@@ -230,7 +230,7 @@ cms_api.post('/delete', mid.checkUserAdmin, function(req, res, next){
                 res.send(data);
               }else{
 
-                Test.find({}).exec(function(err, tests){
+                Test.find({}).sort({ $natural: 1 }).exec(function(err, tests){
 
                     if(err){
                         res.send(data);

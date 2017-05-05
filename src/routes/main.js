@@ -117,7 +117,7 @@ main.get('/audit/:companyslug', function(req, res, next){
 
                                 let competitorAvg = getAvg();
 
-                                Test.find({}).exec(function(err, tests){
+                                Test.find({}).sort({ $natural: 1 }).exec(function(err, tests){
 
                                     if(err){
                                         next();

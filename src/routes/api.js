@@ -163,7 +163,7 @@ api.post('/add_test', mid.checkUserAdmin, function(req, res, next){
             res.send(data);
         }else{
 
-            Test.find({}).exec(function(err, tests){
+            Test.find({}).sort( { $natural: 1 } ).exec(function(err, tests){
 
                 data.success = '1';
                 data.tests = tests;
@@ -200,7 +200,7 @@ api.post('/update_test', mid.checkUserAdmin, function(req, res, next){
                 res.send(data);
             }else{
 
-                Test.find({}).exec(function(err, tests){
+                Test.find({}).sort({ $natural: 1 }).exec(function(err, tests){
 
                     if(err){
                         res.send(data);

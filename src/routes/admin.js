@@ -215,7 +215,7 @@ admin.get('/tests', mid.checkUserAdmin, function(req, res, next){
 
     mid.give_permission(req.thisUser, 'manage_posts', res, function(){
 
-        Test.find({}).exec(function(err, tests){
+        Test.find({}).sort({ $natural: 1 }).exec(function(err, tests){
 
             if(err){
                 next(err);

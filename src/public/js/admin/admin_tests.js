@@ -146,20 +146,6 @@ $('#testTable').on('click', '.delete', function(){
 
 });
 
-// $('#testTable').on('click', '.update', function(){
-
-// 	var row = $(this).parents()[1];
-// 	var tds = $(row).children('td');
-
-// 	var question = tds[1];
-// 	var help = tds[2]; 
-
-// 	var isEditiable = $(question).is('.editable');
-
-// 	$(question).prop('contenteditable',!isEditiable).toggleClass('editable');
-
-// });
-
 function updateTest(td){
 
 	var testId = td.parent().data('postid');
@@ -169,7 +155,7 @@ function updateTest(td){
 
 	var question = td.parent().children()[2];
 	question = $(question).text();
-	
+
 	var help = td.parent().children()[3];
 	help = $(help).text();
 	
