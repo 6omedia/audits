@@ -29,7 +29,7 @@ fs.stat('config.js', function(err, stat) {
 	    process.env.S3_BUCKET_NAME = conf_vars.env_bucket;
 		process.env.AWS_ACCESS_KEY_ID = conf_vars.env_aws_access_key;
 		process.env.AWS_SECRET_ACCESS_KEY = conf_vars.env_aws_secret_key;
-		process.env.PORT = conf_vars.env_port;
+   		process.env.PORT = conf_vars.env_port; 
     }
 
     /** Database stuff **/
