@@ -60,10 +60,13 @@ main.get('/audit/:companyslug', function(req, res, next){
             if(audit != undefined){
 
                 let score = 0;
+                let failedCount = 0;
 
                 audit.tests.forEach(function(item, index){
                     if(item != ''){
                         score = score + 5;
+                    }else{
+                        failedCount++;
                     }
                 });
 
@@ -130,7 +133,8 @@ main.get('/audit/:companyslug', function(req, res, next){
                                             competitors: competitors,
                                             competitorAvg: competitorAvg,
                                             tests: tests,
-                                            score: score
+                                            score: score,
+                                            failedCount: failedCount
                                         });
 
                                     }

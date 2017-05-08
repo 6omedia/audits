@@ -3,10 +3,7 @@ block content
 
 	.container 
 		section#homepage
-			h1 Audit for #{audit.company_name}
-			.theBox
-				p You Have 6 Recommended Improvements
-			p.desc Stop loosing search engine traffic to your competitors by fixing these issues &amp; improving your site's score.
+			
 			.row
 				.col-sm-4
 					.website-summary
@@ -17,7 +14,7 @@ block content
 							p #{audit.company_website}
 						h3 Your Score
 							span #{score}%
-						h4 Competitors Average Score 
+						h4 Competitors' Average Score
 							span #{competitorAvg}%
 						//- a(href="") View more Details
 						//- 	span.glyphicon.glyphicon-chevron-down
@@ -39,6 +36,12 @@ block content
 								a(href="") Get More Clients Today
 				.col-sm-8
 					.mainsection
+						h1 Audit for #{audit.company_name}
+						.theBox
+							p You Have #{failedCount} Recommended Improvement(s)
+						p.desc Stop loosing search engine traffic to your competitors by fixing these issues &amp; improving your site's score.
+						.btn-demo.auto-btn
+							a(href="") Get More Clients Today
 						.tbl_container
 							h2 Attract
 							table.auditTable
@@ -88,7 +91,7 @@ block content
 
 									- conIndex++
 
-						h2 What this website is missing
+						h2.h2Style Recommended Improvements for #{audit.company_name}
 
 						each testResult, index in audit.tests
 							if testResult != 'checked'
