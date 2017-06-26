@@ -53,7 +53,7 @@ $(document).ready(function(){
 
         e.preventDefault();
 
-        modal.show();
+        modal.slideDown(300);
 
     });
 
@@ -64,7 +64,7 @@ $(document).ready(function(){
             return;
         }
 
-        $(this).hide();
+        $(this).slideUp(300);
 
     });
 

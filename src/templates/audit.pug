@@ -96,15 +96,47 @@ block content
 						each testResult, index in audit.tests
 							if testResult != 'checked'
 								.failedTest
-									//- h3 #{tests[index].short}
-									//- .helpBox
-									//- 	span.glyphicon.glyphicon-remove
-									//- 	p This website does not #{tests[index].question}
-									//- img(src=`${tests[index].helpImg}`)
-									//- h4 Recommendations
-									//- p #{tests[index].help}
-									h3 #{tests[index]}
-									hr
+									case index
+										when 0
+											include tests/test1.pug
+										when 1
+											include tests/test2.pug
+										when 2
+											include tests/test3.pug
+										when 3
+											include tests/test4.pug
+										when 4
+											include tests/test5.pug
+										when 5
+											include tests/test6.pug
+										when 6
+											include tests/test7.pug
+										when 7
+											include tests/test8.pug
+										when 8
+											include tests/test9.pug
+										when 9
+											include tests/test10.pug
+										when 10
+											include tests/test11.pug
+										when 11
+											include tests/test12.pug
+										when 12
+											include tests/test13.pug
+										when 13
+											include tests/test14.pug
+										when 14
+											include tests/test15.pug
+										when 15
+											include tests/test16.pug
+										when 16
+											include tests/test17.pug
+										when 17
+											include tests/test18.pug
+										when 18
+											include tests/test19.pug
+										when 19
+											include tests/test20.pug
 
 	.su_modal
 		.box
