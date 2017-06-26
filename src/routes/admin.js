@@ -9,6 +9,7 @@ var Competitor = require('../models/competitor');
 var PracticeArea = require('../models/practice_area');
 // var Category = require('../models/category');
 var Taxonomy = require('../models/taxonomy');
+var ContactRequest = require('../models/contact_request');
 
 var mid = require('../middleware');
 var frontend = require('../middleware/frontend');
@@ -231,6 +232,41 @@ admin.get('/tests', mid.checkUserAdmin, function(req, res, next){
 
             }
 
+        });
+
+    });
+
+});
+
+admin.get('/leads/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
+
+    mid.give_permission(req.thisUser, 'manage_posts', res, function(){
+
+        var docsPerPage = 30;
+        var pageNumber = req.params.pageNum;
+        var offset = (pageNumber * docsPerPage) - docsPerPage;
+
+        ContactRequest.count({}, function(err, count){
+            ContactRequest.find({}).skip(offset).limit(docsPerPage).sort({ $natural: 1 }).exec(function(err, leads){
+
+                const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/leads/page', count);
+
+                if(err){
+                    next(err);
+                }else{
+
+                    res.render('admin_leads', {
+                        title: 'Tests',
+                        user: req.thisUser,
+                        fullname: req.thisUser.fullname,
+                        leads: leads,
+                        admin_script: 'leads',
+                        pageinationLinks: pageinationLinks
+                    });
+
+                }
+
+            });
         });
 
     });

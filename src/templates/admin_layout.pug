@@ -18,7 +18,9 @@ body
 					li
 						a(href="/admin/competitors/page/1") Competitors
 					li
-						a(href="/admin/tests") Tests		
+						a(href="/admin/tests") Tests
+					li
+						a(href="/admin/leads/page/1") Leads		
 
 		//- h1 Taxonomies
 		//- ul.list
@@ -76,3 +78,5 @@ body
 		when 'tests'
 			script(src='/static/js/admin/image_uploader.js')
 			script(src='/static/js/admin/admin_tests.js')
+		when 'leads'
+			script(src='/static/js/admin/admin_leads.js')

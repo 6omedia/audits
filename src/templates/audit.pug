@@ -96,11 +96,33 @@ block content
 						each testResult, index in audit.tests
 							if testResult != 'checked'
 								.failedTest
-									h3 #{tests[index].short}
-									.helpBox
-										span.glyphicon.glyphicon-remove
-										p This website does not #{tests[index].question}
-									img(src=`${tests[index].helpImg}`)
-									h4 Recommendations
-									p #{tests[index].help}
+									//- h3 #{tests[index].short}
+									//- .helpBox
+									//- 	span.glyphicon.glyphicon-remove
+									//- 	p This website does not #{tests[index].question}
+									//- img(src=`${tests[index].helpImg}`)
+									//- h4 Recommendations
+									//- p #{tests[index].help}
+									h3 #{tests[index]}
 									hr
+
+	.su_modal
+		.box
+			span.popdownx x
+			h3 Lets Talk About Your New Website
+			.description
+				p Ready to work on your website’s problem areas &amp; generate more clients online?
+				p Or simply need a little more help understanding your audit?
+				p Fill out the form letting us know how best to contact you &amp; one of our team will get in touch.
+			img(src="/static/img/website_img.png")
+			.theForm
+				.btn.btnPhone.selected_btn Phone
+				.btn.btnEmail Email
+				input(type="text", placeholder="Name...")#q_name
+				.phoneBox
+					input(type="text", placeholder="Phone Number...")#q_phone
+				.emailBox
+					input(type="email", placeholder="Email...")#q_email
+				.btn#send_request(data-company=`${audit.company_name}`) Send
+				.spin
+				span.errorMsg

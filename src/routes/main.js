@@ -161,6 +161,17 @@ main.get('/audit/:companyslug', function(req, res, next){
 
 });
 
+main.get('/thanks', function(req, res, next){
+
+    res.render('thanks', 
+        {
+            title: 'Thanks'
+        }
+    );
+
+});
+
+
 // main.get('/profile', mid.requiresLogin, function(req, res, next){
 //   User.findById(req.session.userId)
 //     .exec(function(error, user){

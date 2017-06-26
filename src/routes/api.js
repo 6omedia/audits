@@ -6,8 +6,9 @@ var Post = require('../models/post');
 var Audit = require('../models/audit');
 var Test = require('../models/test');
 var Competitor = require('../models/competitor');
-// var Category = require('../models/category');
+var Lead = require('../models/contact_request');
 var Taxonomy = require('../models/taxonomy');
+var ContactRequest = require('../models/contact_request');
 
 var mid = require('../middleware');
 
@@ -217,6 +218,78 @@ api.post('/update_test', mid.checkUserAdmin, function(req, res, next){
             }
         }
     );
+
+});
+
+api.post('/contact-request', function(req, res, next){
+
+    let data = {};
+    data.success = '0';
+
+    if(req.body.name == ''){
+        data.error = 'Name Empty';
+        return res.send(data);
+    }
+
+    if(req.body.contactValue == ''){
+        data.error = 'Value Empty';
+        return res.send(data);
+    }
+
+    // add to db
+    var contactRequest = new ContactRequest({
+        company: req.body.company,
+        name: req.body.name,
+        contact_method: req.body.contactMethod,
+        contact_value: req.body.contactValue
+    });
+
+    contactRequest.save(function(err) {
+
+        if(err) {
+            data.error = err;
+            res.send(data);
+        }else{
+            data.success = '1';
+            res.send(data);
+        }
+
+    });
+
+});
+
+api.post('/remove-lead', function(req, res, next){
+
+    let data = {};
+    data.success = '0';
+
+    Lead.remove({ "_id" : req.body.leadId }, function(err){
+        
+        if(err){
+            data.error = err;
+            res.send(data);
+        }else{
+
+            Lead.find({}).exec(function(err, leads){
+
+                if(err){
+
+                    data.error = err;
+                    res.send(data);
+
+                }else{
+
+                    data.success = '1';
+                    data.leads = leads;
+                    res.send(data);
+
+                }
+
+            });
+
+        }
+
+    });
 
 });
 

@@ -50,6 +50,15 @@ p {
 	padding: 0px;
 }
 
+.spin {
+    width: 20px;
+    height: 20px;
+    background: url(../img/spin.gif) no-repeat 50%;
+    background-size: contain;
+    display: inline-block;
+    display: none;
+}
+
 header {
     background: #d32f2f;
     /*padding: 10px 15px;*/
@@ -75,6 +84,17 @@ header h1 span {
 	font-size: 28px;
 	color: #fff;
     font-weight: normal;
+}
+
+.errorMsg {
+    display: block;
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+.invalid {
+    border: solid 1px #ff9e9e;
+    background: #fdf7f7;
 }
 
 .col4 {
@@ -220,13 +240,9 @@ table td.glyphicon-remove {
 }*/
 
 .website-summary {
-	/*padding: 20px;
-    box-shadow: 5px 5px 34px rgba(0,0,0,0.15);
-    margin-bottom: 25px;*/
-
     padding: 0px 20px;
     margin-bottom: 25px;
-    margin-top: 40px;
+    margin-top: 90px;
 }
 
 .website-summary span span {
@@ -287,7 +303,7 @@ li.btn-demo {
 }
 
 li.btn-demo p {
-    margin-top: 0px;
+    margin-top: 0px !important;
 }
 
 span.score {
@@ -366,6 +382,101 @@ footer p {
     margin: 0px;
 }
 
+/* Modal Popup */
+
+.su_modal {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0px;
+    z-index: 1;
+    display: none;
+    overflow: overlay;
+}
+
+.su_modal::-webkit-scrollbar { 
+    display: none; 
+}
+
+.su_modal .box {
+    width: 90%;
+    margin: 20px 5%;
+    text-align: center;
+    background: #fff;
+    padding: 10px;
+}
+
+.su_modal .box h3 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 38px;
+}
+
+.su_modal .box .btn {
+    background: #dedede;
+    color: #a5a5a5;
+    margin-bottom: 15px;
+}
+
+.su_modal .btnPhone {
+    border-radius: 5px 0px 0px 5px;
+}
+
+.su_modal .btnEmail {
+    border-radius: 0px 5px 5px 0px;
+}
+
+.su_modal img {
+    width: 80%;
+    margin: 15px 0px;
+}
+
+.popdownx {
+    display: inline-block;
+    background: #c70000;
+    color: #fff;
+    height: 20px;
+    width: 20px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 15px;
+}
+
+.su_modal .selected_btn {
+    background: #2fc3c5 !important;
+    color: #fff !important;
+}
+
+.su_modal input {
+    width: 90%;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.emailBox {
+    display: none;
+}
+
+#send_request {
+    width: 90%;
+    background: #d32f2f;
+    color: #fff;
+    font-weight: bold;
+}
+
+#send_request:hover {
+    background: #dc8585;
+}
+
+table#leads_table th,
+table#leads_table td {
+    padding: 15px 10px !important;
+}
+
+#thankspage {
+    padding-top: 100px;
+}
 
 /*                                                  MOBILE ONLY
  ******************************************************************************************************************************/
@@ -410,6 +521,18 @@ footer p {
         display: block !important;
     }
 
+    .su_modal .box {
+        padding: 20px 40px 10px 40px;
+    }
+
+    .su_modal input {
+        width: 100%;
+    }
+
+    #send_request {
+        width: auto;
+    }
+
 }
 
 /*                                                    TABLETS
@@ -436,7 +559,7 @@ footer p {
     }
 
     .website-summary {
-        position: fixed;
+        /*position: fixed;*/
         top: 50px;
         width: 220px;
         height: 70px;
@@ -454,6 +577,50 @@ footer p {
         width: 31%;
         float: left;
         margin-right: 2%;
+    }
+
+    .su_modal .box {
+        overflow: hidden;
+        padding: 20px 20px 10px 20px;
+        margin: 50px 10%;
+        width: 80%;
+        position: relative;
+   /*     text-align: left;*/
+    }
+
+    .su_modal img {
+        width: 55%;
+        margin: 15px 0px;
+    }
+
+    .su_modal .description {
+       /* width: 60%;
+        float: left;
+        padding-right: 20px;*/
+    }
+
+    .su_modal .theForm {
+        width: 45%;
+        float: right;
+        margin-top: 30px;
+    }
+
+    .su_modal input {
+        width: 100%;
+    }
+
+    .popdownx {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        height: 30px;
+        width: 30px;
+        font-size: 20px;
+    }
+
+    .ws-fixed {
+        position: fixed !important;
+        top: -340px !important;
     }
 
 }
@@ -483,6 +650,11 @@ footer p {
         font-size: 28px;
     }
 
+    .su_modal .box {
+        margin: 50px 15%;
+        width: 70%;
+    }
+
 }
 
 
@@ -501,6 +673,12 @@ footer p {
 
     .website-summary h4 {
         font-size: 18px;
+    }
+
+    .su_modal .box {
+        margin: 50px auto;
+        max-width: 850px;
+        padding: 20px 60px;
     }
 
 }

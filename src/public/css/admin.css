@@ -84,6 +84,17 @@ video {
     vertical-align: top;
 }
 
+.tbl_x {
+    cursor: pointer;
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    background: #334369;
+    border-radius: 100%;
+    color: #fff;
+}
+
 header {
 	background: #2d2d2d;
 	padding: 10px 0px;
@@ -727,6 +738,11 @@ td a.edit {
 /*td.editable {
     background: #fff7e4;
 }*/
+
+#leads_table td,
+#leads_table th {
+    padding: 5px 10px;
+}   
 
 /*                                                    LAP TOP
  ******************************************************************************************************************************/

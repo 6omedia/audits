@@ -1,0 +1,23 @@
+extends admin_layout
+
+block content
+	h1 Leads
+
+	table#leads_table
+		tr
+			th Company
+			th Name
+			th Contact by
+			th Details
+			th
+
+		each lead in leads
+			tr(data-leadid=`${lead._id}`)
+				td #{lead.company}
+				td #{lead.name}
+				td #{lead.contact_method}
+				td #{lead.contact_value}
+				td 
+					span.tbl_x x
+
+	p !{pageinationLinks}
