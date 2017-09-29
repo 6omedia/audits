@@ -6,9 +6,8 @@ var Post = require('../models/post');
 var Audit = require('../models/audit');
 var Test = require('../models/test');
 var Competitor = require('../models/competitor');
-var Lead = require('../models/contact_request');
 var Taxonomy = require('../models/taxonomy');
-var ContactRequest = require('../models/contact_request');
+var Lead = require('../models/lead');
 
 var mid = require('../middleware');
 
@@ -236,25 +235,40 @@ api.post('/contact-request', function(req, res, next){
         return res.send(data);
     }
 
-    // add to db
-    var contactRequest = new ContactRequest({
-        company: req.body.company,
-        name: req.body.name,
-        contact_method: req.body.contactMethod,
-        contact_value: req.body.contactValue
-    });
+    var AuditInteraction = require('../helpers/leads.js');
+    var auditInteraction = new AuditInteraction(req.body.company);
 
-    contactRequest.save(function(err) {
+    auditInteraction.addLeadAsRequest(req.body, function(err){
 
-        if(err) {
-            data.error = err;
-            res.send(data);
-        }else{
+        if(!err){
             data.success = '1';
             res.send(data);
+        }else{
+            data.error = err;
+            res.send(data);
         }
-
+        
     });
+
+    // add to db
+    // var lead = new Lead({
+    //     company: req.body.company,
+    //     name: req.body.name,
+    //     contact_method: req.body.contactMethod,
+    //     contact_value: req.body.contactValue
+    // });
+
+    // lead.save(function(err) {
+
+    //     if(err) {
+    //         data.error = err;
+    //         res.send(data);
+    //     }else{
+    //         data.success = '1';
+    //         res.send(data);
+    //     }
+
+    // });
 
 });
 

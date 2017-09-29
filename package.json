@@ -4,7 +4,8 @@
   "description": "Audits for 6omedia",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js"
+    "start": "node src/app.js",
+    "test": "mocha"
   },
   "author": "Mike Rockett",
   "license": "ISC",
@@ -22,5 +23,9 @@
     "node-dir": "^0.1.16",
     "node-uuid": "^1.4.7",
     "pug": "^2.0.0-beta6"
+  },
+  "devDependencies": {
+    "chai": "^4.0.2",
+    "mocha": "^3.4.2"
   }
 }

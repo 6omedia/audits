@@ -9,7 +9,7 @@ var Competitor = require('../models/competitor');
 var PracticeArea = require('../models/practice_area');
 // var Category = require('../models/category');
 var Taxonomy = require('../models/taxonomy');
-var ContactRequest = require('../models/contact_request');
+var Lead = require('../models/lead');
 
 var mid = require('../middleware');
 var frontend = require('../middleware/frontend');
@@ -246,8 +246,8 @@ admin.get('/leads/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
         var pageNumber = req.params.pageNum;
         var offset = (pageNumber * docsPerPage) - docsPerPage;
 
-        ContactRequest.count({}, function(err, count){
-            ContactRequest.find({}).skip(offset).limit(docsPerPage).sort({ $natural: 1 }).exec(function(err, leads){
+        Lead.count({}, function(err, count){
+            Lead.find({}).skip(offset).limit(docsPerPage).sort({ $natural: 1 }).exec(function(err, leads){
 
                 const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/leads/page', count);
 

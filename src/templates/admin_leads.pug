@@ -6,6 +6,10 @@ block content
 	table#leads_table
 		tr
 			th Company
+			th Date
+			th Viewed
+			th Duration
+			th Contact
 			th Name
 			th Contact by
 			th Details
@@ -14,6 +18,13 @@ block content
 		each lead in leads
 			tr(data-leadid=`${lead._id}`)
 				td #{lead.company}
+				td #{lead.date}
+				td #{lead.view_count}
+				td #{lead.duration}
+				if lead.contact
+					td Yes
+				else
+					td No
 				td #{lead.name}
 				td #{lead.contact_method}
 				td #{lead.contact_value}

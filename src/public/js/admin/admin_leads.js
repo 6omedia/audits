@@ -19,7 +19,6 @@ tblx.on('click', function(){
 		function(){
 			this.popDown();
 		}
-
 	);
 
 	popup.popUp('Are you sure you want to delete this lead?');
@@ -62,7 +61,19 @@ function reloadLeads(leads){
 
 		string += '<tr>';
 		string += '<td>' + leads[i].company + '</td>';
-		string += '<td>' + leads[i].name + '</td>';
+		string += '<td>' + leads[i].date + '</td>';
+		string += '<td>' + leads[i].view_count + '</td>';
+		string += '<td>' + leads[i].duration + '</td>';
+		string += '<td>'; 
+
+		if(leads[i].contact){
+			string += 'Yes'; 
+		}else{
+			string += 'No'; 
+		}
+
+		string += '</td>';
+		string += '<td>' + leads[i].name + '</td>'; 
 		string += '<td>' + leads[i].contact_method + '</td>';
 		string += '<td>' + leads[i].contact_value + '</td>';
 		string += '<td><span class="' + leads[i]._id + '"></span></td>';

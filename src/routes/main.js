@@ -51,6 +51,10 @@ main.get('/audit/:companyslug', function(req, res, next){
   
     const companySlug = req.params.companyslug;
 
+    var AuditInteraction = require('../helpers/leads.js');
+    var auditInteraction = new AuditInteraction(companySlug);
+    auditInteraction.addLeadAsView();
+
     Audit.findOne({'company_slug': companySlug}).exec(function(error, audit){
 
         if(error){
@@ -161,15 +165,15 @@ main.get('/audit/:companyslug', function(req, res, next){
 
 });
 
-main.get('/thanks', function(req, res, next){
+// main.get('/thanks', function(req, res, next){
 
-    res.render('thanks', 
-        {
-            title: 'Thanks'
-        }
-    );
+//     res.render('thanks', 
+//         {
+//             title: 'Thanks'
+//         }
+//     );
 
-});
+// });
 
 
 // main.get('/profile', mid.requiresLogin, function(req, res, next){

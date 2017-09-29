@@ -178,7 +178,8 @@ $(document).ready(function(){
                 // console.log(data);
                 if(data.success == '1'){
                     // redirect
-                    window.location.href = "/thanks";
+                    spin.hide();
+                    thanks();
                 }else{
                     spin.hide();
                     sendBtn.css('display', 'inline-block');
@@ -193,6 +194,19 @@ $(document).ready(function(){
                 errorMsg.text('Something went wrong, please try again later');
             }
         });
+
+    }
+
+    function thanks(){
+    
+        // change heading text
+        $('.su_modal .box h3').text('Thankyou, someone will be in contact soon!');
+
+        // remove form and p tags
+        $('.su_modal .box .theForm').hide(400);
+        $('.su_modal .box p').hide(400);
+
+        // center image
 
     }
 
