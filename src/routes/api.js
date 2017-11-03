@@ -307,4 +307,23 @@ api.post('/remove-lead', function(req, res, next){
 
 });
 
+api.post('/filterbypostcode', function(req, res, next){
+
+    let body = {};
+
+    Audit.find({postcode: req.body.postcode}, function(err, audits){
+
+        if(err){
+            body.error = err.message || 'Some Error';
+            return body;
+        }
+
+        body.audits = audits;
+        body.success = 'Yep';
+        return res.json(body);
+
+    });
+
+});
+
 module.exports = api;

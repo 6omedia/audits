@@ -6,6 +6,5 @@ var PostCodeSchema = new mongoose.Schema(
 	}
 );
 
-var PostCode = mongoose.model('PracticeAreas', PostCodeSchema);
+var PostCode = mongoose.model('PostCode', PostCodeSchema);
 module.exports = PostCode;
-

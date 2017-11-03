@@ -1,9 +1,9 @@
-
 var express = require('express');
 var admin = express.Router();
 var User = require('../models/user');
 var Post = require('../models/post');
 var Audit = require('../models/audit');
+var PostCode = require('../models/postcode');
 var Test = require('../models/test');
 var Competitor = require('../models/competitor');
 var PracticeArea = require('../models/practice_area');
@@ -34,14 +34,24 @@ admin.get('/audits/page/:pageNum', mid.checkUserAdmin, function(req, res, next){
 
                     const pageinationLinks = frontend.createPaginationLinks(docsPerPage, pageNumber, '/admin/audits/page', count);
 
-                    res.render('admin_audits', {
-                        title: 'Posts',
-                        user: req.thisUser,
-                        fullname: req.thisUser.fullname,
-                        audits: audits,
-                        pageinationLinks: pageinationLinks,
-                        admin_script: 'audits'
+                    Audit.find({}).distinct('postcode').exec(function(err, postCodes){
+
+                        if(err){
+                            return next(err);
+                        }
+
+                        res.render('admin_audits', {
+                            title: 'Posts',
+                            user: req.thisUser,
+                            fullname: req.thisUser.fullname,
+                            audits: audits,
+                            postCodes: postCodes,
+                            pageinationLinks: pageinationLinks,
+                            admin_script: 'audits'
+                        });
+
                     });
+
                 }
 
             });

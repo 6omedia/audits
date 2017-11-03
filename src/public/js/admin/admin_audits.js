@@ -1,4 +1,3 @@
-
 const addUrl = '/admin/api/add_audit';
 const updateUrl = '/admin/api/update_audit';
 
@@ -243,4 +242,69 @@ $('#addpa').on('click', function(){
 
 $('#practiceAreaList').on('click', 'span', function(){
 	$(this).parent().remove();
+});
+
+$('#postCodeFilter').on('change', function(){
+
+	// spin
+	var postcode = $(this).val();
+
+	$.ajax({
+		url: '/admin/api/filterbypostcode',
+		dataType: 'json',
+		method: 'POST',
+		data: {
+			postcode: postcode
+		}, 
+		success: function(data){
+
+			if(data.success){
+
+				$('#audits_table tr').slice(1).remove();
+
+				for(var i=0; i<data.audits.length; i++){
+
+					var tr = '<tr>';
+					tr += '<td>';
+						tr += '<a href="/admin/audits/' + data.audits[i]._id + '" class="auditLink">';
+						tr += data.audits[i].company_name;
+						tr += '</a>';
+					tr += '</td>';
+					tr += '<td>';
+						tr += '<a href="' + data.audits[i].company_website + '" class="auditLink">';
+						tr += data.audits[i].company_website;
+						tr += '</a>';
+					tr += '</td>';
+					tr += '<td>';
+						tr += '<a href="http://solicitors.lawsociety.org.uk/search/results?Type=0&Name=' + data.audits[i].company_name + '&Pro=True"  target="_blank" class="auditLink">';
+						tr += 'Search law Society';
+						tr += '</a>';
+					tr += '</td>';
+					tr += '<td><span>' + data.audits[i].postcode + '</span></td>';
+					tr += '<td>';
+					tr += '<ul class="list operations">';
+						tr += '<li>';
+							tr += '<a href="/audit/' + data.audits[i].company_slug + '">View Audit</a>';
+						tr += '</li>';
+						tr += '<li>';
+							tr += '<span class="delete delbtn" data-postid="' + data.audits[i]._id + '">Delete</span>';
+						tr += '</li>';
+						tr += '<li>';
+							tr += '<a href="/audit/' + data.audits[i]._id + '">Edit</a>';
+						tr += '</li>';
+					tr += '</ul>';
+					tr += '</td>';
+					tr += '</tr>';
+
+					$('#audits_table').append(tr);
+
+				}
+
+			}
+		},
+		error: function(a, b, c){
+			console.log(a, b, c);
+		}
+	});
+
 });

@@ -4,18 +4,56 @@ block content
 	h1 Audits
 	a(href="/admin/audits/new" class="btn addnew") Create New Audit
 	br
-	input.filter(id="posts_filter", type="text", placeholder="filter...")
+	//- input.filter(id="postcodeFilter", type="text", placeholder="Filter by postcode...")
 
-	ul.list.entity_list#audit_list
+	select#postCodeFilter
+		option(value="") - select -
+		each postCode in postCodes
+			option(value=`${postCode}`) #{postCode}
+
+	table#audits_table
+		tr
+			th Name
+			th Website
+			th Law Society
+			th Post Code
+			th
 		each audit in audits
-			li
-				a(href=`/admin/audits/${audit._id}`) #{audit.company_name}
-				ul.list.operations
-					li
-						a(href=`/audit/${audit.company_slug}`) View Audit
-					li
-						span.delete.delbtn(data-postid=`${audit._id}`) Delete
-					li
-						a(href=`/admin/audits/${audit._id}`) Edit
+			tr
+				td 
+					a(href=`/admin/audits/${audit._id}`).auditLink #{audit.company_name}
+				td
+					a(href=`${audit.company_website}`).auditLink #{audit.company_website}
+				td
+					a(href=`http://solicitors.lawsociety.org.uk/search/results?Type=0&Name="${audit.company_name}"&Pro=True` target="_blank").auditLink Search law Society
+				td
+					span #{audit.postcode}
+				td
+					ul.list.operations
+						li
+							a(href=`/audit/${audit.company_slug}`) View Audit
+						li
+							span.delete.delbtn(data-postid=`${audit._id}`) Delete
+						li
+							a(href=`/admin/audits/${audit._id}`) Edit
 
 	p !{pageinationLinks}
+
+	//- ul.list.entity_list#audit_list
+	//- 	each audit in audits
+	//- 		li
+	//- 			a(href=`/admin/audits/${audit._id}`).auditLink #{audit.company_name}
+	//- 			a(href=`/admin/audits/${audit._id}`).auditLink #{audit.company_website}
+	//- 			a(href=`/admin/audits/${audit._id}`).auditLink #{audit.company_website}
+	//- 			span #{audit.company_website}
+	//- 			ul.list.operations
+	//- 				li
+	//- 					a(href=`/audit/${audit.company_slug}`) View Audit
+	//- 				li
+	//- 					span.delete.delbtn(data-postid=`${audit._id}`) Delete
+	//- 				li
+	//- 					a(href=`/admin/audits/${audit._id}`) Edit
+
+	//- p !{pageinationLinks}
+
+	//- http://solicitors.lawsociety.org.uk/  search/results?Type=0&Name=`Firm+Name+Goes+Here`&Pro=True

@@ -213,9 +213,22 @@ header .list li a {
 }
 
 .filter {
-	margin: 20px 0px 10px 0px;
-	padding: 5px;
-	width: 400px;
+	margin: 20px 0px 20px 0px;
+    padding: 5px;
+    width: 400px;
+    border: solid 1px #b7ccff;
+    background: #f2f9ff;
+}
+
+.filter:focus {
+    border: solid 1px #3d6bd9;
+    outline: none;
+}
+
+#postCodeFilter {
+    margin: 10px 0px 10px 0px;
+    font-size: 16px;
+    padding: 5px 10px;
 }
 
 .form {
@@ -584,12 +597,14 @@ table {
 }
 
 table th {
-    background: #ddffee;
+    background: #85a1e3;
+    padding: 5px 15px;
+    color: #e8eeff;
 }
 
 table td {
     border-bottom: solid 1px #dcdcdc;
-    padding: 15px 0px;
+    padding: 5px 15px;
 }
 
 .tableCb {
@@ -743,6 +758,10 @@ td a.edit {
 #leads_table th {
     padding: 5px 10px;
 }   
+
+.company_website {
+    width: 190px;
+}
 
 /*                                                    LAP TOP
  ******************************************************************************************************************************/

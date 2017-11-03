@@ -12,4 +12,3 @@ var CompetitorSchema = new mongoose.Schema(
 
 var Competitor = mongoose.model('Competitors', CompetitorSchema);
 module.exports = Competitor;
-
