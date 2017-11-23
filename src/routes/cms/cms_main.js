@@ -23,7 +23,7 @@ cms_main.post('/login', function(req, res, next){
       if(error || !user){
         var err = new Error('Wrong email or password');
         err.status = 401;
-        res.render('error', {title: 'Error', error: err});
+        res.render('login', {title: 'Error', error: err});
       }else{
         req.session.userId = user._id;
 

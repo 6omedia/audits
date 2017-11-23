@@ -58,4 +58,4 @@ function delete_thing(delete_item, itemid, relocateUrl, formObj, norefreshFunc){
 		}
 	});
 
-} 
+}

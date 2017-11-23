@@ -290,7 +290,7 @@ $('#postCodeFilter').on('change', function(){
 							tr += '<span class="delete delbtn" data-postid="' + data.audits[i]._id + '">Delete</span>';
 						tr += '</li>';
 						tr += '<li>';
-							tr += '<a href="/audit/' + data.audits[i]._id + '">Edit</a>';
+							tr += '<a href="/admin/audits/' + data.audits[i]._id + '">Edit</a>';
 						tr += '</li>';
 					tr += '</ul>';
 					tr += '</td>';
